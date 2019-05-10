@@ -1,12 +1,18 @@
 <?php
 get_header();
+
+$args = array(
+    'post_type'      => 'cpt_proyectos',
+    'posts_per_page' => 1,
+);
+$query = new WP_Query( $args ); 
+
 ?>
-<?php $the_query = new WP_Query('showposts=1'); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 			<div class="archive-description posts-page-description"><h1 class="archive-title">Proyectos</h1></div>
 		<?php
-		while ($the_query -> have_posts()) : $the_query -> the_post();
+		while ($query -> have_posts()) : $query -> the_post();
 		?>
 		
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
